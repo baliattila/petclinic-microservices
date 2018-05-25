@@ -6,6 +6,7 @@ services:
 
 deploy:
   provider: script
-  script: bash docker/deploy.sh
+  skip_cleanup: true
+  script: sh docker/deploy.sh
   on:
     branch: master
