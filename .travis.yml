@@ -4,6 +4,9 @@ jdk: oraclejdk8
 services:
 - docker
 
+install:
+  - mvn install -PbuildDocker -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
 deploy:
   provider: script
   skip_cleanup: true
