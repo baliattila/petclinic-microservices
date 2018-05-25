@@ -100,12 +100,25 @@
     <profiles>
         <profile>
             <id>buildDocker</id>
+            <activation>
+                <property>
+                    <name>env.TRAVIS</name>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>com.spotify</groupId>
                         <artifactId>docker-maven-plugin</artifactId>
                         <version>${docker.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>default</id>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
