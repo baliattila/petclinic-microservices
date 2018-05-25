@@ -4,6 +4,9 @@ jdk: oraclejdk8
 services:
 - docker
 
+before_install:
+  - docker login "$DOCKER_REPOSITORY" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+
 install:
   - mvn install -PbuildDocker -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
