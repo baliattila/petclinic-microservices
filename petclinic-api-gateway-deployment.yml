@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: petclinic-api-gateway
+spec:
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: petclinic-api-gateway
+    spec:
+      containers:
+      - name: petclinic-api-gateway
+        image: r.cfcr.io/abali/spring-petclinic-api-gateway
+        ports:
+        - containerPort: 8081
+      imagePullSecrets: # must be set in kubernetes. The secret holds the auth information to private docker registry.
+        - name: codefresh
+
